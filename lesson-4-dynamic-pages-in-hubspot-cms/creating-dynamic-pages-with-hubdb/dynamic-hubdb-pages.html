@@ -1,0 +1,46 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ content.html_title }}</title>
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ standard_header_includes }}
+  </head>
+  <body>
+    
+    {% if dynamic_page_hubdb_row %}
+      <h1>
+        {{ dynamic_page_hubdb_row.name }}  
+      </h1>
+      <h2>
+        {{ dynamic_page_hubdb_row.author }}
+      </h2>
+    {% elif dynamic_page_hubdb_table_id %}
+       {% for row in hubdb_table_rows(5293120)%}
+
+        <h2>
+          <a href="{{ request.path }}/{{ row.hs_path }}">
+            {{ row.name }} 
+          </a>
+        </h2>
+        <p>
+          {{ row.author }}  
+        </p>
+        <em>
+          {% for tag in row.genre %}
+            {{tag.name}}{% if !loop.last %}, {% endif %}
+          {% endfor %}
+        </em>
+
+
+      {% endfor %}
+    
+    {% endif %}
+    
+    {{ standard_footer_includes }}
+  </body>
+</html>

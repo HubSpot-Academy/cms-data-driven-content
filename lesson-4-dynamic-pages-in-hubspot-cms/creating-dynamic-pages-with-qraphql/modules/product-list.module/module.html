@@ -1,0 +1,8 @@
+{% set productData = module.data_query.data.CRM.product_collection.items %}
+
+  {% for product in productData %} 
+     <div class="book-container">
+         <h1><a href="https://39551591.hs-sites.com/store-page/{{product._metadata.id}}"> {{ product.name }} </a></h1>
+         <a>${{ product.price }}</a>
+     </div>
+  {% endfor %}

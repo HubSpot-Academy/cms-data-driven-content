@@ -1,0 +1,24 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% if content.html_title %}<title>{{ content.html_title }}</title>{% endif %}
+    <meta name="description" content="{{ content.meta_description }}">
+    {% if branding_favicon %}
+      <link rel="shortcut icon" href="{{ branding_favicon }}" />
+    {% endif %}
+    {{ standard_header_includes }}
+  </head>
+  <body>
+    {% dnd_area "dnd_area"
+      label="Main section"
+    %}
+
+    {% end_dnd_area %}
+    {{ standard_footer_includes }}
+  </body>
+</html>
