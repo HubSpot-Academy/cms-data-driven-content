@@ -16,7 +16,7 @@ This is the official repository for the CMS Data Driven Content course.For more 
 * Construct GraphQL Queries for Your Dynamic Pages
 * Creating Dynamic Pages with GraphQL
 
-### [Resources]
+### Resources
 * [HubSpot CMS Boilerplate](https://github.com/HubSpot/cms-theme-boilerplate)
 * [HubSpot/recruiting-agency-graphql-theme](https://github.com/HubSpot/recruiting-agency-graphql-theme)
 
