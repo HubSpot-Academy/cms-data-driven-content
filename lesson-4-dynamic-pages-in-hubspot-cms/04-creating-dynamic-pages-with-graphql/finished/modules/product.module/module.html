@@ -1,0 +1,16 @@
+{% if dynamic_page_data_instance %}
+  {% set productData = data_query.data.CRM.product %}
+  {% else %}
+  {% set productData = {
+    name: 'Basic Book',
+    description: 'This is a basic book description, not dynamic.'
+  }
+%}
+{% endif %}
+  
+<h3>
+  {{ productData.name }}
+</h3>
+<p>
+  {{ productData.description }}
+</p>

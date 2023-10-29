@@ -1,0 +1,62 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ content.html_title }}</title>
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ standard_header_includes }}
+  </head>
+  <body>    
+    
+    {% for row in hubdb_table_rows({# Add your number here: 5293120 #}, 'book_type__eq=Fiction&orderBy=name')%}
+    
+      <h2>
+        {{ row.name }}  
+      </h2>
+      <p>
+        {{ row.author }}  
+    </p>
+      <em>
+        
+        {% for tag in row.genre %}
+          {{tag.name}}{% if !loop.last %}, {% endif %}
+        {% endfor %}
+      </em>
+      
+    
+    {% endfor %}
+    
+    <hr/>
+    
+    <h3>
+      Using Select Attribute to Filter
+    </h3>
+    
+    
+    {% set books = hubdb_table_rows({# Add your number here: 5293120 #}) %}
+    {% set fiction = books|selectattr('book_type.name', 'equalto', 'Fiction') %}
+    
+    {% for book in fiction %}
+    
+      <h2>
+        {{ book.name }}  
+      </h2>
+      <p>
+        {{ book.author }}  
+      </p>
+      <em>
+        {% for tag in book.genre %}
+          {{tag.name}}{% if !loop.last %}, {% endif %}
+        {% endfor %}
+      </em>
+ 
+    {% endfor %}
+    
+    
+    {{ standard_footer_includes }}
+  </body>
+</html>

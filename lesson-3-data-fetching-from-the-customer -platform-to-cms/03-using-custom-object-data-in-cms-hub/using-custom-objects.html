@@ -1,0 +1,41 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ content.html_title }}</title>
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ standard_header_includes }}
+  </head>
+  <body>
+   {% set cars = crm_objects("car", "limit=10&orderBy=make&orderBy=year", "make, model, year, price") %}
+  {# To see all of the properties your object during development, print it to the page with the |pprint filter #} 
+  <section aria-labelledby="object-listing-heading">
+    <h3 id="object-listing-heading">
+      Available Cars
+    </h3>
+    <ul>   
+    {% for car in cars.results %}
+      <li>{{ car.year|regex_replace("[,]", "") }} {{ car.make }} {{ car.model }} for ${{ car.price }}</li>
+    {% endfor %}
+    </ul>
+    </section>
+   {% set carsData = crm_objects("car", "limit=100","make, model, year, price") %}
+   {% set cars = carsData.results|selectattr("make", "equalto", "Ford") %} 
+  {# To see all of the properties your object during development, print it to the page with the |pprint filter #} 
+  <section aria-labelledby="object-listing-heading">
+    <h3 id="object-listing-heading">
+      Available Cars | SelectAttr
+    </h3>
+    <ul>   
+    {% for car in cars %}
+      <li>{{ car.year|regex_replace("[,]", "") }} {{ car.make }} {{ car.model }} for ${{ car.price }}</li>
+    {% endfor %}
+    </ul>
+  </section>
+    {{ standard_footer_includes }}
+  </body>
+</html>

@@ -1,0 +1,17 @@
+# label: "Product info page - 1"
+# description: "Show a products's name, price and description"
+# $product_identifier: {{ request.path_param_dict.dynamic_slug }}
+
+query ProductItem($product_identifier: String!) {
+  CRM {
+    product(uniqueIdentifier: "id", uniqueIdentifierValue: $product_identifier) {
+      _metadata {
+        id
+      }
+      hs_object_id
+      name @web_page_title
+      price
+      description @web_page_meta_description
+    }
+  }
+}

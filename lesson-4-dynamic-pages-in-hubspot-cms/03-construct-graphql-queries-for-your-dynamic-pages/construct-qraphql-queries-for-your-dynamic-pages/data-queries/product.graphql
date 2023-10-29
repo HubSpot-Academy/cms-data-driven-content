@@ -1,0 +1,3 @@
+# label: "Product info page - 1"
+# description: "Show a products's name, price and description"
+# $product_identifier: {{ request.path_param_dict.dynamic_slug }}

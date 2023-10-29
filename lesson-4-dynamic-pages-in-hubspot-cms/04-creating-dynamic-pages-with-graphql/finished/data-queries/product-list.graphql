@@ -1,0 +1,17 @@
+# label: "Product Listing page"
+# description: "Show a list of books"
+
+query GoodsList {
+  CRM {
+    product_collection {
+      items {
+        description
+        name
+        price
+        _metadata {
+          id
+        }
+      }
+    }
+  }
+}

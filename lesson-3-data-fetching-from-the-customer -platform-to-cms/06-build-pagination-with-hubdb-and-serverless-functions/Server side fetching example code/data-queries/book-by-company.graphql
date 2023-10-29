@@ -1,0 +1,48 @@
+#  label: "Books by company for Serverside fetching example"
+#  description: "Query that retrieves and filters books based off book store. When filtering by company we need to find the company 
+#  first and then fetch its associated books. We use the directives @include to control which query will run. 
+#  The last query fetches the values we use for generating the filtering options in the UI."
+#  $offset: {{ request.query_dict.offset || 0 }}
+#  $limit: {{ 5 }}
+#  $company: {{ request.query_dict.company || '' }}
+#  $searchByCompany: {{ request.query_dict.searchByCompany || false }}
+
+query booksByCompany( 
+  $offset: Int, 
+  $limit: Int, 
+  $company: String,
+  $searchByCompany: Boolean!)
+{
+  CRM {
+    company_collection(filter: {name__eq: $company} limit: $limit, offset: $offset) @include(if: $searchByCompany) {
+      items {
+        _metadata {
+          id
+        }
+        associations {
+          p_books_collection__books_to_company {
+            items {
+              _metadata {
+                id
+              }
+              title
+              author
+            }
+          }
+        }
+        name
+      }
+    }
+   # Retrieves all company names to show in dropdown boxes on the role listing page as available filters.
+    company_filter_options: company_collection(limit: 1000) {
+      items {
+        name
+      }
+    }
+  }
+}
+    
+
+
+
+   

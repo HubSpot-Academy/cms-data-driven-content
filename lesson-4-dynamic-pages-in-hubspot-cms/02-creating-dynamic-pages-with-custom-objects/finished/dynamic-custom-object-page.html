@@ -1,0 +1,40 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{{ content.html_title }}</title>
+    <meta name="description" content="{{ content.meta_description }}">
+    {{ standard_header_includes }}
+  </head>
+  <body>
+    {% if dynamic_page_crm_object %}
+      {% set car = dynamic_page_crm_object %}
+      <h1>
+        {{ car.year|regex_replace('[,]', '')}} {{ car.make }} {{ car.model}}
+    </h1>
+    <p>
+      Price: {{ car.price }}
+    </p>
+    <p>
+      Date listed: {{ car.date_received }}
+    </p>
+    {% elif dynamic_page_crm_object_type_fqn %}
+     {% set cars = crm_objects(dynamic_page_crm_object_type_fqn, 'limit=10', 'make, model, year, price, vin, date_received') %}
+     {% for car in cars.results %}
+      <h1>
+        <a href="{{request.path}}/{{car.vin}}">
+          {{ car.year|regex_replace('[,]', '')}} {{ car.make}} {{ car.model }}
+        </a>
+    </h1>
+    <p>
+      Price: ${{ car.price }}
+    </p>
+     {% endfor %}
+    {% endif %}
+    {{ standard_footer_includes }}
+  </body>
+</html>
