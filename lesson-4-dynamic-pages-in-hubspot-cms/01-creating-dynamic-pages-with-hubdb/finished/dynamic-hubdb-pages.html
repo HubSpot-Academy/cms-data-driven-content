@@ -11,7 +11,9 @@
     {{ standard_header_includes }}
   </head>
   <body>
-    
+    {# dynamic_page_hubdb_row 
+    The HubDB row of the dynamic page that matches with the page request path. If the request is to the listing page, this value will be null.
+    #}
     {% if dynamic_page_hubdb_row %}
       <h1>
         {{ dynamic_page_hubdb_row.name }}  

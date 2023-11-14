@@ -11,39 +11,7 @@
     {{ standard_header_includes }}
   </head>
   <body>
-    
-    {# dynamic_page_hubdb_row 
-    The HubDB row of the dynamic page that matches with the page request path. If the request is to the listing page, this value will be null.
-    #}
-    {% if dynamic_page_hubdb_row %}
-      
-      <h1>
-        {{ dynamic_page_hubdb_row.name }}  
-      </h1>
-      <h2>
-        {{ dynamic_page_hubdb_row.author }}
-      </h2>
-    {% elif dynamic_page_hubdb_table_id %}
-       {% for row in hubdb_table_rows(5293120)%}
 
-        <h2>
-          <a href="{{ request.path }}/{{ row.hs_path }}">
-            {{ row.name }} 
-          </a>
-        </h2>
-        <p>
-          {{ row.author }}  
-        </p>
-        <em>
-          {% for tag in row.genre %}
-            {{tag.name}}{% if !loop.last %}, {% endif %}
-          {% endfor %}
-        </em>
-
-
-      {% endfor %}
-    
-    {% endif %}
     
     {{ standard_footer_includes }}
   </body>
