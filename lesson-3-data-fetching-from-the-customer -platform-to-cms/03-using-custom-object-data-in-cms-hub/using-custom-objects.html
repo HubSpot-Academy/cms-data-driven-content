@@ -11,31 +11,14 @@
     {{ standard_header_includes }}
   </head>
   <body>
-   {% set cars = crm_objects("car", "limit=10&orderBy=make&orderBy=year", "make, model, year, price") %}
-  {# To see all of the properties your object during development, print it to the page with the |pprint filter #} 
-  <section aria-labelledby="object-listing-heading">
-    <h3 id="object-listing-heading">
-      Available Cars
-    </h3>
-    <ul>   
-    {% for car in cars.results %}
-      <li>{{ car.year|regex_replace("[,]", "") }} {{ car.make }} {{ car.model }} for ${{ car.price }}</li>
-    {% endfor %}
-    </ul>
-    </section>
-   {% set carsData = crm_objects("car", "limit=100","make, model, year, price") %}
-   {% set cars = carsData.results|selectattr("make", "equalto", "Ford") %} 
-  {# To see all of the properties your object during development, print it to the page with the |pprint filter #} 
-  <section aria-labelledby="object-listing-heading">
-    <h3 id="object-listing-heading">
-      Available Cars | SelectAttr
-    </h3>
-    <ul>   
-    {% for car in cars %}
-      <li>{{ car.year|regex_replace("[,]", "") }} {{ car.make }} {{ car.model }} for ${{ car.price }}</li>
-    {% endfor %}
-    </ul>
-  </section>
+    {# step 1  call your custom objects data, use the crm_objects function and set it equal to a variable cars. The crm_objects function takes three paramenters object type, a required query and an optional dictionary #}
+    {# step 2 loop through the data in an unordered list #}
+    {# step 3 inside the loop add a list item that includes a car's year, make, model and price #} 
+    {# step 4 use a regualr expression to replace a comman with a blank string #}
+    {# step 5 use the offset filter to change the order of car #}
+    {# note: use select filters if you have a large amount of data #}
+    {# step 6 use Select filters. Set a variable called cars and another vaibale called carsData #}
+
     {{ standard_footer_includes }}
   </body>
 </html>
