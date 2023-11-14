@@ -11,16 +11,17 @@
     {{ standard_header_includes }}
   </head>
   <body>
-   {# step 1 #}
-   {# step 2 #}
-   {# step 3 #}
-   {# step 4 #}
-   {# step 5 #}
-   {# step 6 #}
-   {# step 7 #}
-   {# step 8 #}
-   {# step 9 #}
- 
+   {# step 1 use a conditional and target the dynamic page CRM object variable #}
+   {# step 2 create a new variable car and set it to cynamic_page_crm_object #}
+   {# step 3 list the car's detail in an h1 tag inside your conditional. List the car's year, make, and model #}
+   {# step 4 use regex replace to get rid of the comma in the year #}
+   {# step 5 inside a p tag call the car's price #}
+   {# step 6 inside another p tag and a car's date #}
+   {# step 7 add a conditional statement on dynamic_page_crm_object_type_fqn. This will ensure the template will only work if the CMS page is dynamic. Add limit, make, model, year, price, vin and date received #}
+   {# step 8 Now that you have your data loop through the data and display the make, model, and year inside a h1 tag #}
+   {# step 9 Hyperlink the h1 tag and link it the the dynamic url #}
+   {# step 10 call the car's price in a p tag #}
+
     {{ standard_footer_includes }}
   </body>
 </html>

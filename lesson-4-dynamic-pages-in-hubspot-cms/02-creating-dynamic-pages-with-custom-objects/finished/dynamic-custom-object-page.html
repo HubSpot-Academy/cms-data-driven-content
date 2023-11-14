@@ -11,25 +11,35 @@
     {{ standard_header_includes }}
   </head>
   <body>
+   {# step 1 use a conditional and target the dynamic page CRM object variable #}
     {% if dynamic_page_crm_object %}
+      {# step 2 create a new variable car and set it to cynamic_page_crm_object #}
       {% set car = dynamic_page_crm_object %}
+      {# step 3 list the car's detail in an h1 tag inside your conditional. List the car's year, make, and model #}
+      {# step 4 use regex replace to get rid of the comma in the year #}
       <h1>
         {{ car.year|regex_replace('[,]', '')}} {{ car.make }} {{ car.model}}
     </h1>
+    {# step 5 inside a p tag call the car's price #}
     <p>
       Price: {{ car.price }}
     </p>
+    {# step 6 inside another p tag and a car's date #}
     <p>
       Date listed: {{ car.date_received }}
     </p>
+    {# step 7 add a conditional statement on dynamic_page_crm_object_type_fqn. This will ensure the template will only work if the CMS page is dynamic. Add limit, make, model, year, price, vin and date received #}
     {% elif dynamic_page_crm_object_type_fqn %}
+    {# step 8 Now that you have your data loop through the data and display the make, model, and year inside a h1 tag #}
      {% set cars = crm_objects(dynamic_page_crm_object_type_fqn, 'limit=10', 'make, model, year, price, vin, date_received') %}
      {% for car in cars.results %}
+      {# step 9 Hyperlink the h1 tag and link it the the dynamic url #}
       <h1>
         <a href="{{request.path}}/{{car.vin}}">
           {{ car.year|regex_replace('[,]', '')}} {{ car.make}} {{ car.model }}
         </a>
     </h1>
+    {# step 10 call the car's price in a p tag #}
     <p>
       Price: ${{ car.price }}
     </p>
