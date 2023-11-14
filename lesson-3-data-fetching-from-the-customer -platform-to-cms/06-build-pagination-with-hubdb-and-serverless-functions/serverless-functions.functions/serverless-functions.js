@@ -10,9 +10,7 @@ exports.main = (context, sendResponse) => {
     
     // Step 3 identify the service owner with our portal ID by assigning the
 
-
-    //Step 4 
-    //Use a conditional that checks to see if the parameters passed from the client contains an "after" link
+    //Step 4 Use a conditional that checks to see if the parameters passed from the client contains an "after" link
     
-    //Step 5  using Axios to make a GET request. It takes the URL to which you want to send a GET request and it'll return a promise where you can listen to the success case and the fail case. 
+    //Step 5 using Axios to make a GET request. It takes the URL to which you want to send a GET request and it'll return a promise where you can listen to the success case and the fail case. 
 }

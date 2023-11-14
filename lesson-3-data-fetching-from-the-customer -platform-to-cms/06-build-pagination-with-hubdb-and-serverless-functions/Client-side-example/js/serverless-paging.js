@@ -6,13 +6,13 @@
 
 // Step 4 create a function called renderResponse. The renderResponse function will create a new div for every book and store it in a variable called mainContainer
 
-// Step 5  use the JSON.parse method to convert the JSON object and store it in a variable called responseJson.
+// Step 5 use the JSON.parse method to convert the JSON object and store it in a variable called responseJson.
 
 // Step 6 set the nextLink variable using ternary operators to add the after link if it exists in the response.
 
 // Step 7 loop through the books in the HubDB table to create an element for every book.
 
-// Step 8 w fetchBooks function that will fetch more books when the user requests them. 
+// Step 8 fetchBooks function that will fetch more books when the user requests them. 
 
 // Step 9 create a variable called targetURL. We will assign a targetURL with the value /_hcms/api/books?portalid=[your portalid].
 
