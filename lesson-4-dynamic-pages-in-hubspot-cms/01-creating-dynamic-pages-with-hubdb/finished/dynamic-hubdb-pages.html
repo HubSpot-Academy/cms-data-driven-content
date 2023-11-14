@@ -11,20 +11,24 @@
     {{ standard_header_includes }}
   </head>
   <body>
-    {# dynamic_page_hubdb_row 
-    The HubDB row of the dynamic page that matches with the page request path. If the request is to the listing page, this value will be null.
-    #}
+   {# step 1 use the conditional dynamic_page_hubdb_row to write your markup for the dynamic pages#}
     {% if dynamic_page_hubdb_row %}
+      {# step 3 Inside the first conditional loop through the HubDB table and create a listing view #}
+      {# step 4 inside the first condtional call your data using dot notation #}
+      {# step 5 add the book's title inside an h1 tag and the author's name in a h3 tag #}
       <h1>
         {{ dynamic_page_hubdb_row.name }}  
       </h1>
-      <h2>
+      <h3>
         {{ dynamic_page_hubdb_row.author }}
-      </h2>
+      </h3>
+  {# step 2 us the conditional dynamic_page_hubdb_table_id #}
     {% elif dynamic_page_hubdb_table_id %}
+      {# step 6 inside the second loop through the HubDB data using hubdb_table_rows(). Use the argument table id #}
        {% for row in hubdb_table_rows(5293120)%}
 
         <h2>
+        {# step 7 call book name in a h2 tag add a hyperlink to the dynamic page in a p tag add the book author #}
           <a href="{{ request.path }}/{{ row.hs_path }}">
             {{ row.name }} 
           </a>
@@ -32,6 +36,8 @@
         <p>
           {{ row.author }}  
         </p>
+        {# step 8 use another for loop through the genre tags and add it to a p tag #}
+        {# step 9 use a loop.last to add a commaafter each genre #}
         <em>
           {% for tag in row.genre %}
             {{tag.name}}{% if !loop.last %}, {% endif %}
