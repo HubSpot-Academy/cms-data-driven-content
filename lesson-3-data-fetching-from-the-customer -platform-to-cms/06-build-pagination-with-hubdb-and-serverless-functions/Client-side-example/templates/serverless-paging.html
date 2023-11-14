@@ -14,17 +14,10 @@
     {{ standard_header_includes }}
   </head>
   <body>
-  {{ require_js(get_asset_url("/Serverless Functions/js/serverless-paging.js")) }}
+  {# Step 1 add the required js #}
+  
+  {# Step 2 Add a button tag with an ID of getMoreBooks and add an event listener to call fetchBooks when the user clicks on the button. #}
     
-    <button id="getMoreBooks" onclick="fetchBooks()">
-    Get More Books
-    </button>
-    {% dnd_area "dnd_area"
-      label="Main section"
-    %}
-    
-    
-    {% end_dnd_area %}
      
     {{ standard_footer_includes }}
 
