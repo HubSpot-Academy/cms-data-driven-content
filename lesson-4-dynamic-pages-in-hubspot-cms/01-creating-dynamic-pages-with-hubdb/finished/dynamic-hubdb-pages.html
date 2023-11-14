@@ -22,7 +22,7 @@
       <h3>
         {{ dynamic_page_hubdb_row.author }}
       </h3>
-  {# step 2 us the conditional dynamic_page_hubdb_table_id #}
+  {# step 2 use the conditional dynamic_page_hubdb_table_id #}
     {% elif dynamic_page_hubdb_table_id %}
       {# step 6 inside the second loop through the HubDB data using hubdb_table_rows(). Use the argument table id #}
        {% for row in hubdb_table_rows(5293120)%}
