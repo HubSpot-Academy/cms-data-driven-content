@@ -1,0 +1,32 @@
+<!--
+    templateType: page
+    isAvailableForNewContent: true
+-->
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% if content.html_title %}<title>{{ content.html_title }}</title>{% endif %}
+    <meta name="description" content="{{ content.meta_description }}">
+    {% if brand_settings.primaryFavicon.src %}
+      <link rel="shortcut icon" href="{{ brand_settings.primaryFavicon.src }}" />
+    {% endif %}
+    {{ standard_header_includes }}
+  </head>
+  <body>
+  {{ require_js(get_asset_url("/Serverless Functions/js/serverless-paging.js")) }}
+    
+    <button id="getMoreBooks" onclick="fetchBooks()">
+    Get More Books
+    </button>
+    {% dnd_area "dnd_area"
+      label="Main section"
+    %}
+    
+    
+    {% end_dnd_area %}
+     
+    {{ standard_footer_includes }}
+
+  </body>
+</html>

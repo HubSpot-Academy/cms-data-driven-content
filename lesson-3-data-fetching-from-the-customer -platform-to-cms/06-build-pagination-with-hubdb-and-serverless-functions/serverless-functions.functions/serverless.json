@@ -1,0 +1,12 @@
+{
+  "runtime": "nodejs18.x",
+  "version": "1.0",
+  "environment": {},
+  "secrets":["library"],
+  "endpoints": {
+    "books": {
+      "method": "GET",
+      "file": "serverless-functions.js"
+    }
+  }
+}

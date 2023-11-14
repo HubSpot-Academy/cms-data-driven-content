@@ -1,9 +1,0 @@
-{
-  "global" : false,
-  "categories" : [ "functionality" ],
-  "icon" : "@hubspot/boilerplate/images/module-icons/menu.svg",
-  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
-  "module_id" : 132125497963,
-  "label" : "Menu",
-  "is_available_for_new_content" : true
-}
