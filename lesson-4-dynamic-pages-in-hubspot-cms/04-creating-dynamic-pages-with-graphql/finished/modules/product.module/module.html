@@ -1,13 +1,17 @@
+{# step 1 check to see if a page is dynamic using an if statment #}
 {% if dynamic_page_data_instance %}
+  {# step 2 inside the if block reference of your query using the data_query variable #}
   {% set productData = data_query.data.CRM.product %}
   {% else %}
+  {# step 3 if the page is not dynamic add default content to display a book name and description #}
   {% set productData = {
     name: 'Basic Book',
     description: 'This is a basic book description, not dynamic.'
   }
 %}
 {% endif %}
-  
+
+{# step 4 if the page is dynamic call the product name in a h3 tag and the product description in a p tag #}  
 <h3>
   {{ productData.name }}
 </h3>

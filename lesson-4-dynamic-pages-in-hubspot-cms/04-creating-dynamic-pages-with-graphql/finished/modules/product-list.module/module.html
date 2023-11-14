@@ -1,7 +1,10 @@
+{# step 1 call the query data to display a list of books by title and and price #}
 {% set productData = module.data_query.data.CRM.product_collection.items %}
 
+  {# step 2 loop through your products and display book title in a h1 tag and p tag #}
   {% for product in productData %} 
      <div class="book-container">
+        {# step 3 add an anchor inside the h1 that will link a user to that book's details page #}
          <h1><a href="https://39551591.hs-sites.com/store-page/{{product._metadata.id}}"> {{ product.name }} </a></h1>
          <a>${{ product.price }}</a>
      </div>
