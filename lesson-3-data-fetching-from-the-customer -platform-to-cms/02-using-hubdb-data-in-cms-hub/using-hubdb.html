@@ -11,50 +11,15 @@
     {{ standard_header_includes }}
   </head>
   <body>    
-    
-    {% for row in hubdb_table_rows({# Add your number here: 5293120 #}, 'book_type__eq=Fiction&orderBy=name')%}
-    
-      <h2>
-        {{ row.name }}  
-      </h2>
-      <p>
-        {{ row.author }}  
-    </p>
-      <em>
-        
-        {% for tag in row.genre %}
-          {{tag.name}}{% if !loop.last %}, {% endif %}
-        {% endfor %}
-      </em>
-      
-    
-    {% endfor %}
-    
-    <hr/>
-    
-    <h3>
-      Using Select Attribute to Filter
-    </h3>
-    
-    
-    {% set books = hubdb_table_rows({# Add your number here: 5293120 #}) %}
-    {% set fiction = books|selectattr('book_type.name', 'equalto', 'Fiction') %}
-    
-    {% for book in fiction %}
-    
-      <h2>
-        {{ book.name }}  
-      </h2>
-      <p>
-        {{ book.author }}  
-      </p>
-      <em>
-        {% for tag in book.genre %}
-          {{tag.name}}{% if !loop.last %}, {% endif %}
-        {% endfor %}
-      </em>
- 
-    {% endfor %}
+   
+    {# step 1 call the table using hubdb_table_rows function #}
+    {# step 2 loop through each row in the table #}
+    {# step 3 add the name in an h2 tag #}
+    {# step 4 loop through the genre tags #}
+    {# step 5 inside the loop displays the genre name #}
+    {# step 6 use the optional filter query parameter to reduce the amount of data you pulling from your table by filtering it. This is best if you have a small amount of data #}
+    {# step 7 use subsets in HubL if you have large and complex data to grab and filter. Subsets in HubL is where select and reject attributes filters can be benificial #}
+
     
     
     {{ standard_footer_includes }}
